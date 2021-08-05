@@ -4,19 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class Customer
+public class Customer : Person
 {
-    public string FirstName;
-    public string LastName;
-
-    public Customer(string FName, string LName)
+    private string _deliveryAddress;
+    public Customer(string FName, string LName, string DAddress) : base(FName, LName)
     {
-        FirstName = FName;
-        LastName = LName;
+        _deliveryAddress = DAddress;
     }
-    public void Print()
+
+    public string DeliveryAddress { get => _deliveryAddress; set => _deliveryAddress = value; }
+
+    public override void Print()
     {
-        Console.WriteLine($"Full Name: {FirstName} {LastName}");
+        Console.Write($"Delivery Address: {_deliveryAddress}, ");
+        base.Print();
     }
 }
 
